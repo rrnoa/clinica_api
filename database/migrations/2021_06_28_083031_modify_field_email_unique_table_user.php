@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEspecialtiesTable extends Migration
+class ModifyFieldEmailUniqueTableUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateEspecialtiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('especialties', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropUnique('users_email_unique');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateEspecialtiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('especialties');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }
