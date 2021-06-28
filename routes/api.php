@@ -35,4 +35,5 @@ Route::get('/especialties/search/{name}', [EspecialtyController::class, 'search'
 Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::post('/especialties', [EspecialtyController::class, 'store']);
     Route::post('user/create', [UserController::class, 'create']);
+    Route::get('user/logout', [UserController::class, 'logout']);
 });

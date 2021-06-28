@@ -74,4 +74,11 @@ class UserController extends Controller
 
             return response($response,201);
     }
+
+    public function logout(Request $request){
+        auth()->user()->tokens()->delete();
+        return [
+            'message' => 'Loged Out'
+        ];
+    }
 }
