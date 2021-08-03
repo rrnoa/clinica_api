@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Especiality;
+namespace App\Http\Controllers\Specialty;
 
 use App\Http\Controllers\Controller;
 use App\Http\Library\ApiHelpers;
-use App\Models\Especialty;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 
-class EspecialtyController extends Controller
+class SpecialtyController extends Controller
 {
     use ApiHelpers;
     /**
@@ -17,17 +17,7 @@ class EspecialtyController extends Controller
      */
     public function index()
     {
-        return Especialty::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Specialty::all();
     }
 
     /**
@@ -38,14 +28,14 @@ class EspecialtyController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $request->user();
+        /*$user = $request->user();
         if(!$this->isAdmin($user)){
             return response('unauthorized', 403);
-        }               
+        }*/             
         $request->validate([
-            'name' => 'required|max:255|unique:especialties'
+            'name' => 'required|max:255|unique:specialties'
         ]);
-        return Especialty::create($request->all());
+        return Specialty::create($request->all());
     }
 
     /**
@@ -56,18 +46,7 @@ class EspecialtyController extends Controller
      */
     public function show($id)
     {
-        return Especialty::find($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return Specialty::find($id);
     }
 
     /**
@@ -79,9 +58,9 @@ class EspecialtyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $especialty = Especialty::find($id);
-        $especialty->update($request->all());
-        return $especialty;
+        $specialty = Specialty::find($id);
+        $specialty->update($request->all());
+        return $specialty;
     }
 
     /**
@@ -92,7 +71,7 @@ class EspecialtyController extends Controller
      */
     public function destroy($id)
     {
-        return Especialty::destroy($id);
+        return Specialty::destroy($id);
     }
 
     /**
@@ -103,6 +82,6 @@ class EspecialtyController extends Controller
      */
     public function search($name)
     {
-        return Especialty::where('name', 'like', '%'.$name.'%')->get();
+        return Specialty::where('name', 'like', '%'.$name.'%')->get();
     }
 }

@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Specialty;
 
-class Doctor extends Model
+class Patient extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'bi',
         'name',
@@ -16,16 +16,10 @@ class Doctor extends Model
         'sex',
         'telf',
         'photo',
-        'id_specialty',
         'morada',
         'municipio',
         'provincia',
         'email',
         'born_at'
     ];
-
-    public function specialty(){
-        $this->belongsTo(Specialty::class);
-    }
-
 }
